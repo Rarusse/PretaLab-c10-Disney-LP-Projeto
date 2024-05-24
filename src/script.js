@@ -25,6 +25,11 @@ function jogoDeAdivinhacao() {
     atualizarPontuacao(novaPontuacao);
     /* falta adicionar função repetir só até chegar no 0*/
 
+    /* 4. Mostrar todos os palpites errados */
+
+    const palpitesFalhos = pegarPalpitesFalhos();
+    const novosPalpitesFalhos = palpitesFalhos + " " + palpiteDigitado;
+    atualizarPalpitesFalhos(novosPalpitesFalhos);
 
      
 
@@ -34,7 +39,6 @@ function jogoDeAdivinhacao() {
     ---
     
     3. Atualizar a pontuação a cada palpite errado
-    4. Mostrar todos os palpites errados
     5. Deve-se poder reiniciar o jogo a qualquer momento
     6. Se a pontuação chegar a zero, deve ser exibido um alerta e reiniciado o jogo
     
