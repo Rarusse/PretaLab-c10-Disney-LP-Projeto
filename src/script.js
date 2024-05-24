@@ -1,57 +1,40 @@
-let numeroAleatorio = 56;
+let numeroAleatorio = Math.floor(Math.random() * 100);
 let tentativas = 0;
 
 function jogoDeAdivinhacao() {
     const palpiteDigitado = pegarPalpiteDigitado();
             
     if (!palpiteDigitado) {
-        alert("Digite um valor válido")
+        alert("Digite um valor válido");
         return;
-        /*1. Não aceita palpite vazio*/
     }
 
     if (palpiteDigitado === numeroAleatorio) {
-        alert ("Parabéns, você adivinhou!")
-        /*2. Dar dicas a cada palpite (maior ou menor)*/
+        alert ("Parabéns, você adivinhou!");
     } else if (palpiteDigitado > numeroAleatorio) {
         tentativas++;
-        atualizarFeedback ("Esse número é muito alto, tente novamente.")
+        atualizarFeedback ("Esse número é muito alto, tente novamente.");
     } else if (palpiteDigitado < numeroAleatorio)  { 
         tentativas++;
-        atualizarFeedback ("Esse número é muito baixo, tente novamente.")
+        atualizarFeedback ("Esse número é muito baixo, tente novamente.");
     }
 
-    const novaPontuacao = 100 - (tentativas - 10);
+    const novaPontuacao = 100 - (tentativas * 10);
     atualizarPontuacao(novaPontuacao);
-    /* falta adicionar função repetir só até chegar no 0*/
-
-    /* 4. Mostrar todos os palpites errados */
 
     const palpitesFalhos = pegarPalpitesFalhos();
     const novosPalpitesFalhos = palpitesFalhos + " " + palpiteDigitado;
     atualizarPalpitesFalhos(novosPalpitesFalhos);
-
-     
-
-    
-    /*
-    Guiado
-    ---
-    
-    3. Atualizar a pontuação a cada palpite errado
-    5. Deve-se poder reiniciar o jogo a qualquer momento
-    6. Se a pontuação chegar a zero, deve ser exibido um alerta e reiniciado o jogo
-    
-    Individual
-    ---
-    7. Só deve aceitar numeros entre 1 e 100
-    8. Não deve aceitar palpite repetido
-    */
-
-
-    // to-do
 }
 
 function reiniciarJogo() {
-    // to-do
+    const vaiReiniciar = confirm("Deseja sair do jogo atual e começar um novo jogo?");
+
+    if(vaiReiniciar === true) {
+        atualizarPalpitesFalhos("");
+        atualizarPontuacao(100);
+        atualizarFeedback("");
+        limparPalpiteDigitado();
+    }
 }
+
