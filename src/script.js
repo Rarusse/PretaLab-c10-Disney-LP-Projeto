@@ -14,12 +14,17 @@ function jogoDeAdivinhacao() {
         alert ("Parabéns, você adivinhou!")
         /*2. Dar dicas a cada palpite (maior ou menor)*/
     } else if (palpiteDigitado > numeroAleatorio) {
+        tentativas++;
         atualizarFeedback ("Esse número é muito alto, tente novamente.")
-    } else {
+    } else if (palpiteDigitado < numeroAleatorio)  { 
+        tentativas++;
         atualizarFeedback ("Esse número é muito baixo, tente novamente.")
     }
 
-    
+    const novaPontuacao = 100 - (tentativas - 10);
+    atualizarPontuacao(novaPontuacao);
+    /* falta adicionar função repetir só até chegar no 0*/
+
 
      
 
