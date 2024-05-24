@@ -1,12 +1,33 @@
-let numeroAleatorio = 0;
+let numeroAleatorio = 56;
 let tentativas = 0;
 
 function jogoDeAdivinhacao() {
+    const palpiteDigitado = pegarPalpiteDigitado();
+            
+    if (!palpiteDigitado) {
+        alert("Digite um valor válido")
+        return;
+        /*1. Não aceita palpite vazio*/
+    }
+
+    if (palpiteDigitado === numeroAleatorio) {
+        alert ("Parabéns, você adivinhou!")
+        /*2. Dar dicas a cada palpite (maior ou menor)*/
+    } else if (palpiteDigitado > numeroAleatorio) {
+        atualizarFeedback ("Esse número é muito alto, tente novamente.")
+    } else {
+        atualizarFeedback ("Esse número é muito baixo, tente novamente.")
+    }
+
+    
+
+     
+
+    
     /*
     Guiado
     ---
-    1. Não aceita palpite vazio
-    2. Dar dicas a cada palpite (maior ou menor)
+    
     3. Atualizar a pontuação a cada palpite errado
     4. Mostrar todos os palpites errados
     5. Deve-se poder reiniciar o jogo a qualquer momento
